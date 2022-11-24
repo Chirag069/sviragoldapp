@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -6,16 +6,16 @@ import {
   TouchableWithoutFeedback,
   ScrollView,
   Platform,
-} from "react-native";
-import { useSelector, useDispatch } from "react-redux";
-import Feather from "react-native-vector-icons/Feather";
-import { SafeView } from "./News.Style.js";
-import { colors } from "../../theme/colors.js";
-import { Button } from "react-native-paper";
-import AviraHeader from "../../components/aviraHeader.Component.js";
-import SeachModal from "../../components/SeachModal.Component.js";
-import GuestUserModal from "../../components/GuestUserModal.js";
-import MultiSlider from "@ptomasroos/react-native-multi-slider";
+} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import Feather from 'react-native-vector-icons/Feather';
+import {SafeView} from './News.Style.js';
+import {colors} from '../../theme/colors.js';
+import {Button} from 'react-native-paper';
+import AviraHeader from '../../components/aviraHeader.Component.js';
+import SeachModal from '../../components/SeachModal.Component.js';
+import GuestUserModal from '../../components/GuestUserModal.js';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import {
   setGenderCheckValue,
   setSubCategoryCheckValue,
@@ -24,17 +24,17 @@ import {
   filterTypesAction,
   clearAllFilter,
   applyFilterAction,
-} from "../../redux/actions/productActions";
-import { FAB } from "react-native-paper";
-import CustomStatusBar from "../../Custom/CustomStatusBar.js";
-import { stoneValueChangeAction } from "../../redux/actions/authActons";
+} from '../../redux/actions/productActions';
+import {FAB} from 'react-native-paper';
+import CustomStatusBar from '../../Custom/CustomStatusBar.js';
+import {stoneValueChangeAction} from '../../redux/actions/authActons';
 
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-import StoneValue from "./Components/StoneValue.Component";
-import { sc, vsc, msc } from "../../appConstants/Utils";
+import StoneValue from './Components/StoneValue.Component';
+import {sc, vsc, msc} from '../../appConstants/Utils';
 
-const News = ({ navigation }) => {
+const News = ({navigation}) => {
   const dispatch = useDispatch();
   const {
     filterGenderList,
@@ -43,11 +43,11 @@ const News = ({ navigation }) => {
     filterItemGroup,
     filterLoading,
     filterError,
-  } = useSelector((state) => state.productState);
+  } = useSelector(state => state.productState);
 
-  const { userToken } = useSelector((state) => state.authState);
+  const {userToken} = useSelector(state => state.authState);
 
-  const [filterTitle, setFilterTitle] = useState("GENDER");
+  const [filterTitle, setFilterTitle] = useState('GENDER');
   useEffect(() => {
     dispatch(filterTypesAction());
   }, [userToken]);
@@ -55,16 +55,16 @@ const News = ({ navigation }) => {
   const CLEARALL = () => {
     dispatch(clearAllFilter());
     dispatch(stoneValueChangeAction([0, 40]));
-    setFilterTitle("GENDER");
+    setFilterTitle('GENDER');
   };
 
   const ApplyFilters = () => {
     dispatch(applyFilterAction());
-    navigation.navigate("Matches");
+    navigation.navigate('Matches');
   };
 
   return (
-    <View bgColor={"#FFFEFD"}>
+    <View bgColor={'#FFFEFD'}>
       <CustomStatusBar backgroundColor="#db9b7b" />
       <AviraHeader navigation={navigation} />
       <SeachModal navigation={navigation} />
@@ -72,36 +72,33 @@ const News = ({ navigation }) => {
 
       <View style={{}}>
         {/*end0---- filter header-----3/7 */}
-        <View style={{ flexDirection: "row" }}>
+        <View style={{flexDirection: 'row'}}>
           <View
             style={{
-              width: Dimensions.get("window").width * 0.35,
-              backgroundColor: "#e0e0e0",
-              height: Dimensions.get("window").height - 179,
-            }}
-          >
+              width: Dimensions.get('window').width * 0.35,
+              backgroundColor: '#e0e0e0',
+              height: Dimensions.get('window').height - 179,
+            }}>
             <View
               style={{
-                flexDirection: "row",
-                backgroundColor: "#e0e0e0",
+                flexDirection: 'row',
+                backgroundColor: '#e0e0e0',
                 paddingVertical: vsc(10),
                 paddingHorizontal: sc(10),
-                justifyContent: "space-between",
+                justifyContent: 'space-between',
                 borderBottomWidth: sc(0.5),
-                borderColor: "#DDDDDD",
-                alignItems: "center",
-                width: Dimensions.get("window").width * 0.35,
+                borderColor: '#DDDDDD',
+                alignItems: 'center',
+                width: Dimensions.get('window').width * 0.35,
                 height: vsc(60),
-                overflow: "hidden",
-              }}
-            >
-              <View style={{ width: "100%", alignItems: "center" }}>
+                overflow: 'hidden',
+              }}>
+              <View style={{width: '100%', alignItems: 'center'}}>
                 <Text
                   numberOfLines={2}
                   adjustsFontSizeToFit
                   minimumFontScale={0.1}
-                  style={{ fontSize: vsc(16), color: "#808080" }}
-                >
+                  style={{fontSize: vsc(16), color: '#808080'}}>
                   FILTER BY
                 </Text>
               </View>
@@ -110,93 +107,85 @@ const News = ({ navigation }) => {
             {/* 0.35 playerBordernd */}
             <TouchableWithoutFeedback
               onPress={() => {
-                setFilterTitle("GENDER");
-              }}
-            >
+                setFilterTitle('GENDER');
+              }}>
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                   backgroundColor:
-                    filterTitle === "GENDER" ? "#c4c4c4" : "#e0e0e0",
+                    filterTitle === 'GENDER' ? '#c4c4c4' : '#e0e0e0',
                   paddingVertical: vsc(10),
                   paddingHorizontal: sc(10),
-                  justifyContent: "space-between",
+                  justifyContent: 'space-between',
                   borderBottomWidth: sc(0.3),
-                  borderColor: "#666666",
-                  alignItems: "center",
-                  width: Dimensions.get("window").width * 0.35,
+                  borderColor: '#666666',
+                  alignItems: 'center',
+                  width: Dimensions.get('window').width * 0.35,
                   height: vsc(60),
-                  overflow: "hidden",
-                }}
-              >
-                <View style={{ width: "75%" }}>
+                  overflow: 'hidden',
+                }}>
+                <View style={{width: '75%'}}>
                   <Text
                     numberOfLines={2}
                     adjustsFontSizeToFit
                     minimumFontScale={0.1}
-                    style={{ color: "#000000", fontSize: vsc(16) }}
-                  >
+                    style={{color: '#000000', fontSize: vsc(16)}}>
                     Gender
                   </Text>
                 </View>
                 <View
                   style={{
-                    width: "25%",
-                    opacity: filterGenderList.some((item) => item.check == true)
+                    width: '25%',
+                    opacity: filterGenderList.some(item => item.check == true)
                       ? 1
                       : 0,
-                    height: filterGenderList.some((item) => item.check == true)
-                      ? "auto"
+                    height: filterGenderList.some(item => item.check == true)
+                      ? 'auto'
                       : 0,
-                  }}
-                >
-                  <Feather name={"check"} size={vsc(25)} color="#808080" />
+                  }}>
+                  <Feather name={'check'} size={vsc(25)} color="#808080" />
                 </View>
               </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback
               onPress={() => {
-                setFilterTitle("ITEM GROUP");
-              }}
-            >
+                setFilterTitle('ITEM GROUP');
+              }}>
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                   backgroundColor:
-                    filterTitle === "ITEM GROUP" ? "#c4c4c4" : "#e0e0e0",
+                    filterTitle === 'ITEM GROUP' ? '#c4c4c4' : '#e0e0e0',
                   paddingVertical: vsc(10),
                   paddingHorizontal: sc(10),
-                  justifyContent: "space-between",
+                  justifyContent: 'space-between',
                   borderBottomWidth: sc(0.3),
-                  borderColor: "#666666",
-                  alignItems: "center",
-                  width: Dimensions.get("window").width * 0.35,
+                  borderColor: '#666666',
+                  alignItems: 'center',
+                  width: Dimensions.get('window').width * 0.35,
                   height: vsc(60),
-                  overflow: "hidden",
-                }}
-              >
-                <View style={{ width: "75%" }}>
+                  overflow: 'hidden',
+                }}>
+                <View style={{width: '75%'}}>
                   <Text
                     numberOfLines={2}
                     adjustsFontSizeToFit
                     minimumFontScale={0.1}
-                    style={{ color: "#000000", fontSize: vsc(16) }}
-                  >
+                    style={{color: '#000000', fontSize: vsc(16)}}>
                     Item Group
                   </Text>
                 </View>
                 <View
                   style={{
-                    width: "25%",
-                    opacity: filterItemGroup.some((item) => item.check == true)
+                    width: '25%',
+                    opacity: filterItemGroup.some(item => item.check == true)
                       ? 1
                       : 0,
-                    height: filterItemGroup.some((item) => item.check == true)
-                      ? "auto"
+                    height: filterItemGroup.some(item => item.check == true)
+                      ? 'auto'
                       : 0,
-                  }}
-                >
+                  }}>
                   <Feather name="check" size={vsc(25)} color="#808080" />
                 </View>
               </View>
@@ -204,46 +193,42 @@ const News = ({ navigation }) => {
 
             <TouchableWithoutFeedback
               onPress={() => {
-                setFilterTitle("CATEGORY");
-              }}
-            >
+                setFilterTitle('CATEGORY');
+              }}>
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                   backgroundColor:
-                    filterTitle === "CATEGORY" ? "#c4c4c4" : "#e0e0e0",
+                    filterTitle === 'CATEGORY' ? '#c4c4c4' : '#e0e0e0',
                   paddingVertical: vsc(10),
                   paddingHorizontal: sc(10),
-                  justifyContent: "space-between",
+                  justifyContent: 'space-between',
                   borderBottomWidth: sc(0.3),
-                  borderColor: "#666666",
-                  alignItems: "center",
-                  width: Dimensions.get("window").width * 0.35,
+                  borderColor: '#666666',
+                  alignItems: 'center',
+                  width: Dimensions.get('window').width * 0.35,
                   height: vsc(60),
-                  overflow: "hidden",
-                }}
-              >
-                <View style={{ width: "75%" }}>
+                  overflow: 'hidden',
+                }}>
+                <View style={{width: '75%'}}>
                   <Text
                     numberOfLines={2}
                     adjustsFontSizeToFit
                     minimumFontScale={0.1}
-                    style={{ color: "#000000", fontSize: vsc(16) }}
-                  >
+                    style={{color: '#000000', fontSize: vsc(16)}}>
                     Category
                   </Text>
                 </View>
                 <View
                   style={{
-                    width: "25%",
-                    opacity: filterCategory.some((item) => item.check == true)
+                    width: '25%',
+                    opacity: filterCategory.some(item => item.check == true)
                       ? 1
                       : 0,
-                    height: filterCategory.some((item) => item.check == true)
-                      ? "auto"
+                    height: filterCategory.some(item => item.check == true)
+                      ? 'auto'
                       : 0,
-                  }}
-                >
+                  }}>
                   <Feather name="check" size={vsc(25)} color="#808080" />
                 </View>
               </View>
@@ -251,48 +236,42 @@ const News = ({ navigation }) => {
 
             <TouchableWithoutFeedback
               onPress={() => {
-                setFilterTitle("SUB CATEGORY");
-              }}
-            >
+                setFilterTitle('SUB CATEGORY');
+              }}>
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                   backgroundColor:
-                    filterTitle === "SUB CATEGORY" ? "#c4c4c4" : "#e0e0e0",
+                    filterTitle === 'SUB CATEGORY' ? '#c4c4c4' : '#e0e0e0',
                   paddingVertical: vsc(10),
                   paddingHorizontal: sc(10),
-                  justifyContent: "space-between",
+                  justifyContent: 'space-between',
                   borderBottomWidth: sc(0.3),
-                  borderColor: "#666666",
-                  alignItems: "center",
-                  width: Dimensions.get("window").width * 0.35,
+                  borderColor: '#666666',
+                  alignItems: 'center',
+                  width: Dimensions.get('window').width * 0.35,
                   height: vsc(60),
-                  overflow: "hidden",
-                }}
-              >
-                <View style={{ width: "75%" }}>
+                  overflow: 'hidden',
+                }}>
+                <View style={{width: '75%'}}>
                   <Text
                     numberOfLines={2}
                     adjustsFontSizeToFit
                     minimumFontScale={0.1}
-                    style={{ color: "#000000", fontSize: vsc(16) }}
-                  >
+                    style={{color: '#000000', fontSize: vsc(16)}}>
                     Sub Category
                   </Text>
                 </View>
                 <View
                   style={{
-                    width: "25%",
-                    opacity: filterSubCategory.some(
-                      (item) => item.check == true
-                    )
+                    width: '25%',
+                    opacity: filterSubCategory.some(item => item.check == true)
                       ? 1
                       : 0,
-                    height: filterSubCategory.some((item) => item.check == true)
-                      ? "auto"
+                    height: filterSubCategory.some(item => item.check == true)
+                      ? 'auto'
                       : 0,
-                  }}
-                >
+                  }}>
                   <Feather name="check" size={vsc(25)} color="#808080" />
                 </View>
               </View>
@@ -334,45 +313,41 @@ const News = ({ navigation }) => {
           </View>
           <View
             style={{
-              width: Dimensions.get("window").width * 0.65,
-              backgroundColor: "#F6F7FB",
-            }}
-          >
+              width: Dimensions.get('window').width * 0.65,
+              backgroundColor: '#F6F7FB',
+            }}>
             <View
               style={{
-                flexDirection: "row",
-                backgroundColor: "#F6F7FB",
+                flexDirection: 'row',
+                backgroundColor: '#F6F7FB',
                 paddingVertical: vsc(10),
                 paddingHorizontal: sc(10),
-                justifyContent: "space-between",
+                justifyContent: 'space-between',
                 borderBottomWidth: sc(0.5),
-                borderColor: "#dddddd",
-                alignItems: "center",
-                width: Dimensions.get("window").width * 0.65,
+                borderColor: '#dddddd',
+                alignItems: 'center',
+                width: Dimensions.get('window').width * 0.65,
                 height: vsc(60),
-                overflow: "hidden",
-              }}
-            >
-              <View style={{ width: "100%", alignItems: "center" }}>
+                overflow: 'hidden',
+              }}>
+              <View style={{width: '100%', alignItems: 'center'}}>
                 <Text
                   numberOfLines={2}
                   adjustsFontSizeToFit
                   minimumFontScale={0.1}
-                  style={{ fontSize: vsc(16), color: "#808080" }}
-                >
+                  style={{fontSize: vsc(16), color: '#808080'}}>
                   {filterTitle}
                 </Text>
               </View>
             </View>
 
-            {filterTitle === "GENDER" ? (
+            {filterTitle === 'GENDER' ? (
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                   padding: vsc(10),
-                  flexWrap: "wrap",
-                }}
-              >
+                  flexWrap: 'wrap',
+                }}>
                 {filterGenderList &&
                 Array.isArray(filterGenderList) &&
                 filterGenderList.length > 0 ? (
@@ -382,26 +357,23 @@ const News = ({ navigation }) => {
                         onPress={() => {
                           dispatch(setGenderCheckValue(item.id));
                           //  setGents((item) => !item);
-                        }}
-                      >
+                        }}>
                         <View
                           style={{
-                            borderColor: "#db9b7b",
-                            backgroundColor: item.check ? "#db9b7b" : "#F6F7FB",
+                            borderColor: '#db9b7b',
+                            backgroundColor: item.check ? '#db9b7b' : '#F6F7FB',
                             paddingVertical: vsc(8),
                             paddingHorizontal: sc(6),
                             borderWidth: sc(1),
-                            alignSelf: "flex-start",
+                            alignSelf: 'flex-start',
                             borderRadius: sc(5),
                             margin: sc(5),
-                          }}
-                        >
+                          }}>
                           <Text
                             style={{
-                              color: !item.check ? "#db9b7b" : "#F6F7FB",
+                              color: !item.check ? '#db9b7b' : '#F6F7FB',
                               fontSize: vsc(16),
-                            }}
-                          >
+                            }}>
                             {item.name}
                           </Text>
                         </View>
@@ -412,14 +384,13 @@ const News = ({ navigation }) => {
               </View>
             ) : null}
 
-            {filterTitle === "ITEM GROUP" ? (
+            {filterTitle === 'ITEM GROUP' ? (
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                   padding: vsc(10),
-                  flexWrap: "wrap",
-                }}
-              >
+                  flexWrap: 'wrap',
+                }}>
                 {filterItemGroup &&
                 Array.isArray(filterItemGroup) &&
                 filterItemGroup.length > 0 ? (
@@ -429,26 +400,23 @@ const News = ({ navigation }) => {
                         onPress={() => {
                           dispatch(setItemGroupCheckValue(item.id));
                           //  setGents((item) => !item);
-                        }}
-                      >
+                        }}>
                         <View
                           style={{
-                            borderColor: "#db9b7b",
-                            backgroundColor: item.check ? "#db9b7b" : "#F6F7FB",
+                            borderColor: '#db9b7b',
+                            backgroundColor: item.check ? '#db9b7b' : '#F6F7FB',
                             paddingVertical: vsc(8),
                             paddingHorizontal: sc(6),
                             borderWidth: sc(1),
-                            alignSelf: "flex-start",
+                            alignSelf: 'flex-start',
                             borderRadius: sc(5),
                             margin: vsc(5),
-                          }}
-                        >
+                          }}>
                           <Text
                             style={{
-                              color: !item.check ? "#db9b7b" : "#F6F7FB",
+                              color: !item.check ? '#db9b7b' : '#F6F7FB',
                               fontSize: vsc(16),
-                            }}
-                          >
+                            }}>
                             {item.name}
                           </Text>
                         </View>
@@ -459,14 +427,13 @@ const News = ({ navigation }) => {
               </View>
             ) : null}
 
-            {filterTitle === "CATEGORY" ? (
+            {filterTitle === 'CATEGORY' ? (
               <View
                 style={{
-                  flexDirection: "row",
+                  flexDirection: 'row',
                   padding: vsc(10),
-                  flexWrap: "wrap",
-                }}
-              >
+                  flexWrap: 'wrap',
+                }}>
                 {filterCategory &&
                 Array.isArray(filterCategory) &&
                 filterCategory.length > 0 ? (
@@ -476,26 +443,23 @@ const News = ({ navigation }) => {
                         onPress={() => {
                           dispatch(setCategoryCheckValue(item.id));
                           //  setGents((item) => !item);
-                        }}
-                      >
+                        }}>
                         <View
                           style={{
-                            borderColor: "#db9b7b",
-                            backgroundColor: item.check ? "#db9b7b" : "#F6F7FB",
+                            borderColor: '#db9b7b',
+                            backgroundColor: item.check ? '#db9b7b' : '#F6F7FB',
                             paddingVertical: vsc(8),
                             paddingHorizontal: sc(6),
                             borderWidth: sc(1),
-                            alignSelf: "flex-start",
+                            alignSelf: 'flex-start',
                             borderRadius: vsc(5),
                             margin: sc(5),
-                          }}
-                        >
+                          }}>
                           <Text
                             style={{
-                              color: !item.check ? "#db9b7b" : "#F6F7FB",
+                              color: !item.check ? '#db9b7b' : '#F6F7FB',
                               fontSize: vsc(16),
-                            }}
-                          >
+                            }}>
                             {item.name}
                           </Text>
                         </View>
@@ -506,15 +470,17 @@ const News = ({ navigation }) => {
               </View>
             ) : null}
 
-            {filterTitle === "SUB CATEGORY" ? (
-              <ScrollView contentContainerStyle={{ paddingBottom: Platform.OS === 'ios'? vsc(0): vsc(300) }}>
+            {filterTitle === 'SUB CATEGORY' ? (
+              <ScrollView
+                contentContainerStyle={{
+                  paddingBottom: Platform.OS === 'ios' ? vsc(0) : vsc(300),
+                }}>
                 <View
                   style={{
-                    flexDirection: "row",
+                    flexDirection: 'row',
                     padding: vsc(10),
-                    flexWrap: "wrap",
-                  }}
-                >
+                    flexWrap: 'wrap',
+                  }}>
                   {filterSubCategory &&
                   Array.isArray(filterSubCategory) &&
                   filterSubCategory.length > 0 ? (
@@ -524,28 +490,25 @@ const News = ({ navigation }) => {
                           onPress={() => {
                             dispatch(setSubCategoryCheckValue(item.id));
                             //  setGents((item) => !item);
-                          }}
-                        >
+                          }}>
                           <View
                             style={{
-                              borderColor: "#db9b7b",
+                              borderColor: '#db9b7b',
                               backgroundColor: item.check
-                                ? "#db9b7b"
-                                : "#F6F7FB",
+                                ? '#db9b7b'
+                                : '#F6F7FB',
                               paddingVertical: vsc(8),
                               paddingHorizontal: sc(6),
                               borderWidth: sc(1),
-                              alignSelf: "flex-start",
+                              alignSelf: 'flex-start',
                               borderRadius: sc(5),
                               margin: vsc(5),
-                            }}
-                          >
+                            }}>
                             <Text
                               style={{
-                                color: !item.check ? "#db9b7b" : "#F6F7FB",
+                                color: !item.check ? '#db9b7b' : '#F6F7FB',
                                 fontSize: vsc(16),
-                              }}
-                            >
+                              }}>
                               {item.name}
                             </Text>
                           </View>
@@ -557,8 +520,8 @@ const News = ({ navigation }) => {
               </ScrollView>
             ) : null}
 
-            {filterTitle === "STONE %" ? (
-              <View style={{ padding: vsc(10) }}>
+            {filterTitle === 'STONE %' ? (
+              <View style={{padding: vsc(10)}}>
                 <StoneValue />
               </View>
             ) : null}
@@ -568,20 +531,19 @@ const News = ({ navigation }) => {
 
       <View
         style={{
-          position: "absolute",
+          position: 'absolute',
           right: 0,
           // bottom:-25,
-          bottom: Platform.OS === "ios" ? 15 : -25,
-          flexDirection: "row",
-          backgroundColor: "#F6F7FB",
+          bottom: Platform.OS === 'ios' ? 15 : -65,
+          flexDirection: 'row',
+          backgroundColor: '#F6F7FB',
           borderTopWidth: vsc(1),
-          borderColor: "#DDDDDD",
-        }}
-      >
-        <View style={{ width: Dimensions.get("window").width / 2 }}>
+          borderColor: '#DDDDDD',
+        }}>
+        <View style={{width: Dimensions.get('window').width / 2}}>
           <Button
             labelStyle={{
-              color: "#db9b7b",
+              color: '#db9b7b',
               paddingVertical: vsc(3),
               fontSize: vsc(14),
             }}
@@ -592,15 +554,14 @@ const News = ({ navigation }) => {
             }}
             buttonColor="#dddddd"
             mode="contained"
-            onPress={CLEARALL}
-          >
+            onPress={CLEARALL}>
             CLEAR ALL
           </Button>
         </View>
-        <View style={{ width: Dimensions.get("window").width / 2 }}>
+        <View style={{width: Dimensions.get('window').width / 2}}>
           <Button
             labelStyle={{
-              color: "#FFFFFF",
+              color: '#FFFFFF',
               paddingVertical: vsc(3),
               fontSize: vsc(14),
             }}
@@ -611,8 +572,7 @@ const News = ({ navigation }) => {
             }}
             buttonColor="#db9b7b"
             mode="contained"
-            onPress={ApplyFilters}
-          >
+            onPress={ApplyFilters}>
             APPLY
           </Button>
         </View>
