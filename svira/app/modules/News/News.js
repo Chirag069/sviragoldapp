@@ -33,6 +33,7 @@ import styled from 'styled-components/native';
 
 import StoneValue from './Components/StoneValue.Component';
 import {sc, vsc, msc} from '../../appConstants/Utils';
+import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
 
 const News = ({navigation}) => {
   const dispatch = useDispatch();
@@ -77,7 +78,7 @@ const News = ({navigation}) => {
             style={{
               width: Dimensions.get('window').width * 0.35,
               backgroundColor: '#e0e0e0',
-              height: Dimensions.get('window').height - 179,
+              height: Dimensions.get('window').height * 0.84,
             }}>
             <View
               style={{
@@ -533,8 +534,8 @@ const News = ({navigation}) => {
         style={{
           position: 'absolute',
           right: 0,
-          // bottom:-25,
-          bottom: Platform.OS === 'ios' ? 15 : -65,
+          top: vsc(655),
+          // bottom: Platform.OS === 'ios' ? vsc(15) : vsc(0),
           flexDirection: 'row',
           backgroundColor: '#F6F7FB',
           borderTopWidth: vsc(1),

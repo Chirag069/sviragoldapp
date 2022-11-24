@@ -12,6 +12,7 @@ import {
   FlatList,
   Pressable,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {Modal} from 'react-native';
@@ -510,7 +511,7 @@ const Polls = ({navigation, route}) => {
             setImageViewShow(false);
           }}
           style={{
-            top: Platform.OS === 'ios' ? 60 : 20,
+            top: Platform.OS === 'ios' ? vsc(60) : vsc(20),
             zIndex: 5,
             position: 'absolute',
             // left: Dimensions.get('window').width - (Platform.OS === 'ios' ? 60 : 50),
@@ -570,7 +571,12 @@ const Polls = ({navigation, route}) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        style={{height: vsc(490)}} //here
+        style={
+          {
+            // height: Platform.OS === 'ios' ? vsc(490) : '100%',
+            // height: Dimensions.get('window').height * 0.891,
+          }
+        } //here
       >
         {/* product items */}
 
@@ -1139,17 +1145,19 @@ const Polls = ({navigation, route}) => {
           </View>
         </View>
 
-        {/* <View style={{ paddingBottom: vsc(50) }}
-         /> */}
+        <View style={{paddingBottom: vsc(50)}} />
       </ScrollView>
 
       <View
         style={{
+          position: 'absolute',
+          bottom: vsc(80),
+          right: 0,
+          left: 0,
           backgroundColor: '#FFFFFF',
           flexDirection: 'row',
           justifyContent: 'space-around',
           alignItems: 'center',
-          paddingVertical: vsc(10),
         }}>
         <TouchableOpacity
           onPress={() => {
@@ -1162,6 +1170,7 @@ const Polls = ({navigation, route}) => {
             }
           }}
           style={{
+            marginVertical: vsc(10),
             backgroundColor: '#666666',
             paddingVertical: vsc(13),
             paddingHorizontal: sc(14),
