@@ -534,7 +534,7 @@ const News = ({navigation}) => {
         style={{
           position: 'absolute',
           right: 0,
-          top: vsc(655),
+          top:Platform.OS === 'ios' ?vsc(625): vsc(655),
           // bottom: Platform.OS === 'ios' ? vsc(15) : vsc(0),
           flexDirection: 'row',
           backgroundColor: '#F6F7FB',

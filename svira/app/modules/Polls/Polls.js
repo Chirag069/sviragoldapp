@@ -1145,13 +1145,13 @@ const Polls = ({navigation, route}) => {
           </View>
         </View>
 
-        <View style={{paddingBottom: vsc(50)}} />
+        <View style={{paddingBottom:Platform.OS === "ios"?vsc(90): vsc(50)}} />
       </ScrollView>
 
       <View
         style={{
           position: 'absolute',
-          bottom: vsc(80),
+          bottom: Platform.OS === "ios"?vsc(120): vsc(80),
           right: 0,
           left: 0,
           backgroundColor: '#FFFFFF',
