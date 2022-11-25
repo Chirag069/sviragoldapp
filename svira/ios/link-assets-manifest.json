@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "app/assets/fonts/Cairo-Regular.ttf",
+      "sha1": "2c9067476ae5fb4a3590970fa66c6451f36d13f5"
+    },
+    {
+      "path": "app/assets/fonts/Play-Regular.ttf",
+      "sha1": "7e75d0a572065912ca2c79e7583df593c280cd66"
+    }
+  ]
+}
